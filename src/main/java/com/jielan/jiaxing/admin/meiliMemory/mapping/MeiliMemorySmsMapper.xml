@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jielan.jiaxing.admin.meiliMemory.dao.MeiliMemorySmsMapper">
+  <resultMap id="BaseResultMap" type="com.jielan.jiaxing.admin.meiliMemory.moudle.MeiliMemorySms">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, phone, code, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from meili_memory_sms
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="findCodeByPhone" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from meili_memory_sms
+    where phone = #{phone,jdbcType=VARCHAR}
+    order by create_time desc
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from meili_memory_sms
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jielan.jiaxing.admin.meiliMemory.moudle.MeiliMemorySms">
+    insert into meili_memory_sms (id, phone, code, 
+      create_time)
+    values (#{id,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jielan.jiaxing.admin.meiliMemory.moudle.MeiliMemorySms">
+    insert into meili_memory_sms
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jielan.jiaxing.admin.meiliMemory.moudle.MeiliMemorySms">
+    update meili_memory_sms
+    <set>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jielan.jiaxing.admin.meiliMemory.moudle.MeiliMemorySms">
+    update meili_memory_sms
+    set phone = #{phone,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

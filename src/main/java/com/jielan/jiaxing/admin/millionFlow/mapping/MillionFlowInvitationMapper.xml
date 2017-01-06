@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jielan.jiaxing.admin.millionFlow.dao.MillionFlowInvitationMapper">
+  <resultMap id="BaseResultMap" type="com.jielan.jiaxing.admin.millionFlow.moudle.MillionFlowInvitation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="isbind" jdbcType="INTEGER" property="isbind" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="idate" jdbcType="VARCHAR" property="idate" />
+    <result column="unionid" jdbcType="VARCHAR" property="unionid" />
+    <result column="sname" jdbcType="VARCHAR" property="sname" />
+    <result column="headimgurl" jdbcType="VARCHAR" property="headimgurl" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="bind_time" jdbcType="TIMESTAMP" property="bindTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pid, isbind, openid, idate, unionid, sname, headimgurl, create_time, bind_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from million_flow_invitation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="findRecordsByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from million_flow_invitation
+    where pid = #{pid,jdbcType=INTEGER}
+    and idate = #{idate,jdbcType=VARCHAR}
+    and isbind = #{isbind,jdbcType=INTEGER}
+  </select>
+  <select id="findInvitationsByParams"  parameterType="java.util.Map" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from million_flow_invitation
+      where unionid = #{unionid,jdbcType=VARCHAR}
+      and idate = #{idate,jdbcType=VARCHAR}
+      and isbind = #{isbind,jdbcType=INTEGER}
+      order by create_time asc
+  </select>
+  <select id="isInsertInvitationData" parameterType="java.util.Map" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from million_flow_invitation
+      where pid = #{pid,jdbcType=INTEGER}
+      and idate = #{idate,jdbcType=VARCHAR}
+      and openid = #{openid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from million_flow_invitation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jielan.jiaxing.admin.millionFlow.moudle.MillionFlowInvitation">
+    insert into million_flow_invitation (id, pid, isbind, 
+      openid, idate, unionid, 
+      sname, headimgurl, create_time, 
+      bind_time)
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{isbind,jdbcType=INTEGER}, 
+      #{openid,jdbcType=VARCHAR}, #{idate,jdbcType=VARCHAR}, #{unionid,jdbcType=VARCHAR}, 
+      #{sname,jdbcType=VARCHAR}, #{headimgurl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{bindTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jielan.jiaxing.admin.millionFlow.moudle.MillionFlowInvitation">
+    insert into million_flow_invitation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="isbind != null">
+        isbind,
+      </if>
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="idate != null">
+        idate,
+      </if>
+      <if test="unionid != null">
+        unionid,
+      </if>
+      <if test="sname != null">
+        sname,
+      </if>
+      <if test="headimgurl != null">
+        headimgurl,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="bindTime != null">
+        bind_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="isbind != null">
+        #{isbind,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="idate != null">
+        #{idate,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null">
+        #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="sname != null">
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="headimgurl != null">
+        #{headimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bindTime != null">
+        #{bindTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jielan.jiaxing.admin.millionFlow.moudle.MillionFlowInvitation">
+    update million_flow_invitation
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="isbind != null">
+        isbind = #{isbind,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="idate != null">
+        idate = #{idate,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null">
+        unionid = #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="sname != null">
+        sname = #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="headimgurl != null">
+        headimgurl = #{headimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bindTime != null">
+        bind_time = #{bindTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jielan.jiaxing.admin.millionFlow.moudle.MillionFlowInvitation">
+    update million_flow_invitation
+    set pid = #{pid,jdbcType=INTEGER},
+      isbind = #{isbind,jdbcType=INTEGER},
+      openid = #{openid,jdbcType=VARCHAR},
+      idate = #{idate,jdbcType=VARCHAR},
+      unionid = #{unionid,jdbcType=VARCHAR},
+      sname = #{sname,jdbcType=VARCHAR},
+      headimgurl = #{headimgurl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      bind_time = #{bindTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

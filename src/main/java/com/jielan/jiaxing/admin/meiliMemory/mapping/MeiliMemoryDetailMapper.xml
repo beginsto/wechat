@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jielan.jiaxing.admin.meiliMemory.dao.MeiliMemoryDetailMapper">
+  <resultMap id="BaseResultMap" type="com.jielan.jiaxing.admin.meiliMemory.moudle.MeiliMemoryDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="descriptor" jdbcType="VARCHAR" property="descriptor" />
+    <result column="pic_name" jdbcType="VARCHAR" property="picName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, phone, descriptor, pic_name, create_time, version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from meili_memory_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="findDetailRecordByPhone" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from meili_memory_detail
+    where phone = #{phone,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from meili_memory_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jielan.jiaxing.admin.meiliMemory.moudle.MeiliMemoryDetail">
+    insert into meili_memory_detail (id, phone, descriptor, 
+      pic_name, create_time, version
+      )
+    values (#{id,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{descriptor,jdbcType=VARCHAR}, 
+      #{picName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jielan.jiaxing.admin.meiliMemory.moudle.MeiliMemoryDetail">
+    insert into meili_memory_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="descriptor != null">
+        descriptor,
+      </if>
+      <if test="picName != null">
+        pic_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptor != null">
+        #{descriptor,jdbcType=VARCHAR},
+      </if>
+      <if test="picName != null">
+        #{picName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jielan.jiaxing.admin.meiliMemory.moudle.MeiliMemoryDetail">
+    update meili_memory_detail
+    <set>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptor != null">
+        descriptor = #{descriptor,jdbcType=VARCHAR},
+      </if>
+      <if test="picName != null">
+        pic_name = #{picName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jielan.jiaxing.admin.meiliMemory.moudle.MeiliMemoryDetail">
+    update meili_memory_detail
+    set phone = #{phone,jdbcType=VARCHAR},
+      descriptor = #{descriptor,jdbcType=VARCHAR},
+      pic_name = #{picName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

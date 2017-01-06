@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jielan.jiaxing.admin.pcdial.dao.PCDialMapper" >
+  <resultMap id="BaseResultMap" type="com.jielan.jiaxing.admin.pcdial.moudle.PCDial" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="phonenum" property="phonenum" jdbcType="VARCHAR" />
+    <result column="award" property="award" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="creattime" property="creattime" jdbcType="TIMESTAMP" />
+    <result column="raffletime" property="raffletime" jdbcType="TIMESTAMP" />
+    <result column="wayType" property="waytype" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userid, phonenum, award, area, wayType, creattime, raffletime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pcdial
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByopenid" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from pcdial
+    where  userid = #{userid,jdbcType=VARCHAR}
+  </select>
+  <select id="findCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+    select count(*)
+    from pcdial
+    where
+    area = #{area,jdbcType=VARCHAR}
+    and
+    date_format(creattime,'%Y-%m-%d') = ${creattime}
+  </select>
+  <select id="findLatestUser" resultMap="BaseResultMap" >
+    SELECT
+    <include refid="Base_Column_List" />
+    from pcdial
+    where award is not NULL
+    AND  award != '谢谢参与'
+    ORDER  BY raffletime DESC
+    LIMIT 50
+  </select>
+  <select id="findCountAll"  resultType="java.lang.Integer">
+      select count(*) from pcdial where area = #{area,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from pcdial
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jielan.jiaxing.admin.pcdial.moudle.PCDial" >
+    insert into pcdial (id, userid, phonenum, 
+      award, area, wayType, creattime, raffletime
+      )
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{phonenum,jdbcType=VARCHAR}, 
+      #{award,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{waytype,jdbcType=VARCHAR}, #{creattime,jdbcType=TIMESTAMP}, #{raffletime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jielan.jiaxing.admin.pcdial.moudle.PCDial" >
+    insert into pcdial
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="phonenum != null" >
+        phonenum,
+      </if>
+      <if test="award != null" >
+        award,
+      </if>
+      <if test="area != null" >
+          area,
+      </if>
+      <if test="waytype != null" >
+          wayType,
+      </if>
+      <if test="creattime != null" >
+        creattime,
+      </if>
+      <if test="raffletime != null" >
+        raffletime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null" >
+        #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="award != null" >
+        #{award,jdbcType=VARCHAR},
+      </if>
+        <if test="area != null" >
+            #{area,jdbcType=VARCHAR},
+        </if>
+      <if test="waytype != null" >
+          #{waytype,jdbcType=VARCHAR},
+      </if>
+      <if test="creattime != null" >
+        #{creattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="raffletime != null" >
+        #{raffletime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jielan.jiaxing.admin.pcdial.moudle.PCDial" >
+    update pcdial
+    <set >
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null" >
+        phonenum = #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="award != null" >
+        award = #{award,jdbcType=VARCHAR},
+      </if>
+        <if test="area != null" >
+            area = #{area,jdbcType=VARCHAR},
+        </if>
+        <if test="waytype != null" >
+           wayType = #{waytype,jdbcType=VARCHAR},
+        </if>
+        <if test="creattime != null" >
+        creattime = #{creattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="raffletime != null" >
+        raffletime = #{raffletime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jielan.jiaxing.admin.pcdial.moudle.PCDial" >
+    update pcdial
+    set userid = #{userid,jdbcType=VARCHAR},
+      phonenum = #{phonenum,jdbcType=VARCHAR},
+      award = #{award,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      wayType = #{waytype,jdbcType=VARCHAR},
+      creattime = #{creattime,jdbcType=TIMESTAMP},
+      raffletime = #{raffletime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

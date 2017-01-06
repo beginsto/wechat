@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jielan.jiaxing.admin.millionFlow.dao.MillionFlowBindMapper">
+  <resultMap id="BaseResultMap" type="com.jielan.jiaxing.admin.millionFlow.moudle.MillionFlowBind">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="bind_time" jdbcType="TIMESTAMP" property="bindTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pid, bind_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from million_flow_bind
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from million_flow_bind
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jielan.jiaxing.admin.millionFlow.moudle.MillionFlowBind">
+    insert into million_flow_bind (id, pid, bind_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{bindTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jielan.jiaxing.admin.millionFlow.moudle.MillionFlowBind">
+    insert into million_flow_bind
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="bindTime != null">
+        bind_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="bindTime != null">
+        #{bindTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jielan.jiaxing.admin.millionFlow.moudle.MillionFlowBind">
+    update million_flow_bind
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="bindTime != null">
+        bind_time = #{bindTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jielan.jiaxing.admin.millionFlow.moudle.MillionFlowBind">
+    update million_flow_bind
+    set pid = #{pid,jdbcType=INTEGER},
+      bind_time = #{bindTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

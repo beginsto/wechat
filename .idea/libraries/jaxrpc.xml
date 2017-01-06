@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jaxrpc">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../jiaxing-2016-11-17/jiaxing-2016-11-17/WEB-INF/lib/jaxrpc.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

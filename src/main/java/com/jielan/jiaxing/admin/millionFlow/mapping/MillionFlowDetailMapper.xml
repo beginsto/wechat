@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jielan.jiaxing.admin.millionFlow.dao.MillionFlowDetailMapper">
+  <resultMap id="BaseResultMap" type="com.jielan.jiaxing.admin.millionFlow.moudle.MillionFlowDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="idate" jdbcType="VARCHAR" property="idate" />
+    <result column="invitation_num" jdbcType="INTEGER" property="invitationNum" />
+    <result column="success_num" jdbcType="INTEGER" property="successNum" />
+    <result column="last_time" jdbcType="TIMESTAMP" property="lastTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pid, idate, invitation_num, success_num, last_time, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from million_flow_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="findRecordByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from million_flow_detail
+    where pid = #{pid,jdbcType=INTEGER}
+    and idate = #{idate,jdbcType=VARCHAR}
+  </select>
+  <select id="findNumberOfPartake" resultType="java.lang.Integer">
+    select count(*) from million_flow_detail
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from million_flow_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jielan.jiaxing.admin.millionFlow.moudle.MillionFlowDetail">
+    insert into million_flow_detail (id, pid, idate, 
+      invitation_num, success_num, last_time, 
+      create_time)
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{idate,jdbcType=VARCHAR}, 
+      #{invitationNum,jdbcType=INTEGER}, #{successNum,jdbcType=INTEGER}, #{lastTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jielan.jiaxing.admin.millionFlow.moudle.MillionFlowDetail">
+    insert into million_flow_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="idate != null">
+        idate,
+      </if>
+      <if test="invitationNum != null">
+        invitation_num,
+      </if>
+      <if test="successNum != null">
+        success_num,
+      </if>
+      <if test="lastTime != null">
+        last_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="idate != null">
+        #{idate,jdbcType=VARCHAR},
+      </if>
+      <if test="invitationNum != null">
+        #{invitationNum,jdbcType=INTEGER},
+      </if>
+      <if test="successNum != null">
+        #{successNum,jdbcType=INTEGER},
+      </if>
+      <if test="lastTime != null">
+        #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jielan.jiaxing.admin.millionFlow.moudle.MillionFlowDetail">
+    update million_flow_detail
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="idate != null">
+        idate = #{idate,jdbcType=VARCHAR},
+      </if>
+      <if test="invitationNum != null">
+        invitation_num = #{invitationNum,jdbcType=INTEGER},
+      </if>
+      <if test="successNum != null">
+        success_num = #{successNum,jdbcType=INTEGER},
+      </if>
+      <if test="lastTime != null">
+        last_time = #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jielan.jiaxing.admin.millionFlow.moudle.MillionFlowDetail">
+    update million_flow_detail
+    set pid = #{pid,jdbcType=INTEGER},
+      idate = #{idate,jdbcType=VARCHAR},
+      invitation_num = #{invitationNum,jdbcType=INTEGER},
+      success_num = #{successNum,jdbcType=INTEGER},
+      last_time = #{lastTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

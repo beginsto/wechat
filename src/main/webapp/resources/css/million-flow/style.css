@@ -1,0 +1,164 @@
+* {margin: 0;padding: 0;}
+a {text-decoration: none;display: block;}
+a, button, input, textarea {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+input, textarea {-webkit-appearance: none;}
+body {font-family: "microsoft yahei";}
+li {list-style: none;}
+img {width: 100%;display: block;}
+
+body{width:100%;}
+/****************** 首页 ******************/
+.index{width:100%;position:relative;background:url(http://oss.188jielan.net/jielanwx/jx/million-flow/index_bg.png) no-repeat;background-size:100% 100%;padding-top:15rem;}
+
+.main{width:100%;height:13.6rem;position:relative;}
+.main ul li{position:absolute;width:2.37333rem;height:1.92rem;}
+.main ul #go{width:3.12rem;height:2.48rem;right:0.88rem;bottom:0.72rem;background:url(http://oss.188jielan.net/jielanwx/jx/million-flow/pic_go.png) no-repeat;background-size:100% 100%;}
+.main ul #go_1{right:4rem;bottom:1.6rem;background:url(http://oss.188jielan.net/jielanwx/jx/million-flow/pic_1.png) no-repeat;background-size:100% 100%;}
+.main ul #go_2{right:6.34rem;bottom:2.35rem;background:url(http://oss.188jielan.net/jielanwx/jx/million-flow/pic_2.png) no-repeat;background-size:100% 100%;}
+.main ul #go_3{right:8.56rem;bottom:3.04rem;background:url(http://oss.188jielan.net/jielanwx/jx/million-flow/pic_3.png) no-repeat;background-size:100% 100%;}
+.main ul #go_4{left:6.8rem;bottom:3.92rem;background:url(http://oss.188jielan.net/jielanwx/jx/million-flow/pic_4.png) no-repeat;background-size:100% 100%;}
+.main ul #go_5{left:4.64rem;bottom:4.94rem;background:url(http://oss.188jielan.net/jielanwx/jx/million-flow/pic_5.png) no-repeat;background-size:100% 100%;}
+.main ul #go_6{left:5.70rem;top:5.00rem;background:url(http://oss.188jielan.net/jielanwx/jx/million-flow/pic_6.png) no-repeat;background-size:100% 100%;}
+.main ul #go_7{left:7.12rem;top:3.36rem;background:url(http://oss.188jielan.net/jielanwx/jx/million-flow/pic_7.png) no-repeat;background-size:100% 100%;}
+.main ul #go_8{right:8.6rem;top:2.08rem;background:url(http://oss.188jielan.net/jielanwx/jx/million-flow/pic_8.png) no-repeat;background-size:100% 100%;}
+.main ul li #flag_1{width:3.386667rem;height:3.2rem;position:absolute;left:1.76rem;bottom:0.48rem;}
+.main ul li #flag_2{width:3.386667rem;height:3.2rem;position:absolute;right:2rem;bottom:0.88rem;}
+.main ul li .avatar_box{display:none;position:absolute;left:-4.4%;bottom:90.6%;width:2.42rem;height:3.12rem;background:url(http://oss.188jielan.net/jielanwx/jx/million-flow/avatar_bg.png) no-repeat;background-size:100% 100%;z-index:2;}
+.main ul li .avatar{width:1.68rem;height:1.68rem;border:1px solid #fff;border-radius: 0.84rem;margin:0.32rem 0 0 0.32rem;overflow: hidden;}
+.main ul li .avatar img{width:100%;height:100%;}
+.main ul #go .avatar_box{display:block;left:8.4%;bottom:92.6%;}
+
+.btn_box{width:100%;height:6.4rem;box-sizing:border-box;padding-left:1.04rem;}
+.btn{width:8.53rem;height:2.42rem;float:left;margin:0 0.85rem 0.533rem 0;}
+
+.footer{width:100%;height:2.88rem;color:#fff;font-size:0.85333rem;line-height:2.88rem;}
+.footer .num{width:12.5rem;height:100%;background:#4c7cfc;text-align: center;float:left;}
+.footer .lingqu{width:7.5rem;height:100%;background:#d7d7d7;text-align: center;float:left;}
+.footer .keling{background:#f0266f;}
+
+
+
+/***************************************** 弹窗 BEGIN **************/
+.mask{display:none;position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,0.3);overflow-y: auto;z-index:3;}
+
+/********* 活动规则 ********/
+.rules{display:none;position:relative;width:17.6rem;height:15.6rem;padding-top:3.76rem;margin:6rem 0 0 1.2rem;background:url(http://oss.188jielan.net/jielanwx/jx/million-flow/rules_bg.png) no-repeat;background-size:100% 100%;}
+.rules p{color:#333;margin: 0 0.5rem 0 0.9rem;font-size:0.746667rem;line-height:1.17rem;}
+.rules .close{position:absolute;font-size:2.4rem;color:#999;right:0;top:-0.6rem;}
+
+/********** 登录 **********/
+.login{display:none;position:relative;width:16.56rem;height:15.76rem;margin:6rem 0 0 1.72rem;background:#fff;border-radius:0.16rem;overflow: hidden;}
+.login h3{width:16.56rem;height:2.88rem;line-height:2.88rem;text-align: center;color:#fff;font-weight: normal;background:#ff3b3b;margin-bottom:1.2rem;}
+.login .row{width:14.16rem;height:2.48rem;margin:0 0 1.28rem 1.2rem;font-size:0.8rem;}
+.login .row::after{content:'';clear:both;height:0;visibility:hidden;}
+.login input{border:1px solid #ff3b3b;border-radius:0.4rem;height:2.32rem;text-indent:0.6rem;}
+.login #phone{width:13.85rem;}
+.login #yzm{width:7.2rem;float:left;}
+.login #huoqu{width:5.32rem;height:2.32rem;line-height:2.32rem;float:right;background:#ff3b3b;text-align:center;
+    border-radius:0.4rem;color:#fff;box-shadow:0 2px 0 0 #da2b2b;}
+.login #send{width:11.76rem;margin-left:1.12rem;font-size:0.96rem;background:#ffa800;color:#fff;font-weight: bold;
+    text-align:center;line-height:2.32rem;height:2.32rem;border-radius:0.4rem;box-shadow:0 2px 0 0 #eba51e;}
+
+/******** 老用户 **********/
+.old{display:none;position:absolute;width:16.56rem;height:6.8rem;left:1.72rem;top:30%;background:#fff;border-radius:0.16rem;padding-top:1.2rem;}
+.old p{color:#333;width:100%;text-align: center;line-height:1.48rem;font-size:0.853333rem;}
+.old .red{color:#ff3b3b;}
+
+/****** 新用户成功登录 ********/
+.succ{display:none;width:16.56rem;height:9.92rem;background:#fff;border-radius:0.16rem;position:absolute;left:1.72rem;top:30%;}
+.succ h3{width:16.56rem;height:2.88rem;line-height:2.88rem;text-align: center;color:#fff;font-weight: normal;background:#ff3b3b;margin-bottom:0.8rem;}
+.succ p{color:#333;width:14.56rem;line-height:1.48rem;font-size:0.853333rem;margin-left:1rem;}
+.succ p span{color:#ff3b3b;}
+
+/******** 二维码 **********/
+.erweima_f{width:16.5rem;margin-left:1.75rem;height:35rem;position:relative;box-sizing: border-box;}
+.erweima_f img{width:16.5rem;position:absolute;left:0;top:-2rem;z-index:0;}
+.erweima_f p{font-size:0.853333rem;line-height:1.48rem;color:#fff;text-align: center;width:11.3rem;position:absolute;left:2.6rem;top:23rem;}
+.erweima_f p span{color:#ffee24;}
+.erweima_f a.know{width:11.76rem;height:2.32rem;line-height:2.32rem;text-align:center;background:#ffa800;color:#fff;font-weight: bold;
+    border-radius: 0.4rem;box-shadow:0 3px 0 0 #eba51e;position:absolute;left:2.37rem;top:26.4rem;}
+
+/********** 分享 **********/
+.share_mask{width:100%;height:31.68rem;background:url(http://oss.188jielan.net/jielanwx/jx/million-flow/share_mask.png) no-repeat;background-size:100% 100%;
+    box-sizing:border-box;padding:24.3rem 0 0 5.2rem;}
+.share_mask p{font-size:0.8rem;color:#fff;width:10.6rem;line-height:1.12rem;}
+.share_mask .know{width:8.53333rem;height:2.64rem;margin:4.8rem 0 1rem 0.5rem;}
+/***************************************** 弹窗 END **************/
+
+
+
+/***************** 二维码 *****************/
+.share{width:100%;background:url(http://oss.188jielan.net/jielanwx/jx/million-flow/erweima_bg.png) no-repeat;background-size:100% 100%;padding:2.24rem 0 2.8rem 0;}
+.share .avatar{width:4.56rem;height:4.56rem;margin-left:7.72rem;overflow: hidden;border-radius:2.28rem;border:1px solid #fff;}
+.share .name{font-size:0.74666rem;margin-top:0.75rem;color:#333;width:100%;text-align: center;}
+.gankuai{width:16.8rem;height:3.12rem;line-height:3.12rem;border:1px dashed #999;margin:1.68rem 0 0 1.6rem;text-align: center;font-size:0.8rem;color:#ff3030;}
+.erweima{width:7.89333rem;height:7.89333rem;margin:3.2rem 0 0 6.05rem;}
+.arrow{width:1.2rem;height:3.6rem;margin:0.8rem 0 0 8.88rem;}
+.tips{width:12rem;line-height:1.68rem;margin:0.3rem 0 0 4rem;text-align: center;font-size:0.96rem;}
+.share .mask{display:block;}
+
+/****************** 已推荐好友 ******************/
+.yituijian{width:100%;min-height:35.5rem;position:relative;background:url(http://oss.188jielan.net/jielanwx/jx/million-flow/index_bg.png) no-repeat;background-size:100% 100%;box-sizing:border-box;padding:15.6rem 0 1rem 0;}
+.yituijian .tj_list{width:18.24rem;margin-left:0.88rem;box-sizing:border-box;border:1px solid #ffa800;background:#fff;border-radius:0.4rem;overflow: hidden;}
+.yituijian .tj_list h4{width:100%;height:2.08rem;margin-bottom:0.28rem;font-size:0.96rem;line-height:2.08rem;color:#fff;background:#ffa800;text-align: center;}
+.yituijian .tj_list ul{overflow-y: auto;max-height:17.0rem;}
+.yituijian .tj_list ul li{width:16.8rem;height:3.4rem;margin-left:0.72rem;border-bottom:1px solid #c8c8c8;box-sizing:border-box;
+    display: flex;display: -webkit-flex;
+    justify-content: space-between;-webkit-justify-content: space-between;
+    align-items: center;-webkit-align-items:center;}
+.yituijian .tj_list ul li:nth-last-child(1){border:none;}
+.yituijian .tj_list ul li .avatar{width:2.24rem;height:2.24rem;border:1px solid #c8c8c8;float:left;}
+.yituijian .tj_list ul li .avatar img{width:100%;}
+.yituijian .tj_list ul li .name{font-size:0.693333rem;color:#333;float:left;width:6.4rem;}
+.yituijian .tj_list ul li .time{font-size:0.693333rem;color:#333;float:left;}
+.yituijian a.back{width:14rem;height:2.32rem;line-height:2.32rem;text-align:center;background:#ffa800;color:#fff;font-weight: bold;
+    border-radius: 0.4rem;box-shadow:0 3px 0 0 #eba51e;margin:1rem 0 0 3rem;}
+
+
+/***************** 好友打开页面 *****************/
+.friend{width:100%;background:#ebebeb;padding:1.44rem 0 2.5rem 0;}
+.friend .dialog{width:100%;margin-bottom:1.2rem;opacity: 0;}
+.friend .liuliang_f{width:11.12rem;margin:0.6rem 0 1rem 4.44rem;}
+.friend .lingqu_f{width:8.56rem;margin-left:5.72rem;}
+.friend .dialog:nth-child(1){
+    animation:myfadeInUp 0.8s 0s 1 ease-out;
+    -webkit-animation:myfadeInUp 0.8s 0s 1 ease-out;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;}
+.friend .dialog:nth-child(2){
+    animation:myfadeInUp 0.8s 0.8s 1 ease-out;
+    -webkit-animation:myfadeInUp 0.8s 0.8s 1 ease-out;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;}
+.friend .dialog:nth-child(3){
+    animation:myfadeInUp 0.8s 1.6s 1 ease-out;
+    -webkit-animation:myfadeInUp 0.8s 1.6s 1 ease-out;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;}
+.friend .dialog:nth-child(4){
+    animation:myfadeInUp 0.8s 2.4s 1 ease-out;
+    -webkit-animation:myfadeInUp 0.8s 2.4s 1 ease-out;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;}
+.friend .dialog:nth-child(5){
+    animation:myfadeInUp 0.8s 3.2s 1 ease-out;
+    -webkit-animation:myfadeInUp 0.8s 3.2s 1 ease-out;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;}
+.friend .liuliang_f,.friend .lingqu_f{opacity: 0;
+    animation:myfadeInUp 0.8s 4.0s 1 ease-out;
+    -webkit-animation:myfadeInUp 0.8s 4.0s 1 ease-out;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;}
+
+@keyframes myfadeInUp {
+    0%   {opacity: 0;-webkit-transform: translate(0,20px);}
+    100% {opacity: 1;-webkit-transform: translate(0,0px);}
+}
+@-webkit-keyframes myfadeInUp {
+    0%   {opacity: 0;-webkit-transform: translate(0,20px);}
+    100% {opacity: 1;-webkit-transform: translate(0,0px);}
+}
+
+
+
